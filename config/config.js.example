@@ -1,0 +1,12 @@
+var config = {};
+
+config.env = {
+  TWILIO_ACCOUNT_SID: 'XX_YOUR_SID_HERE',
+  TWILIO_AUTH_TOKEN : 'XX_YOUR_AUTH_TOKEN_HERE',
+
+  OUTGOING : 'XX_YOUR_CLIENT_OUTGOING',
+  INCOMING : 'XX_YOUR_CLIENT_INCOMING',
+  PORT: 8001
+};
+
+module.exports = config;

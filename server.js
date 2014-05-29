@@ -2,7 +2,7 @@
 var twilio = require('twilio'),
     express = require('express');
 
-var process = require ('./config/process');
+var config = require ('./config/config');
 
 // Create an express application
 var app = express();
@@ -16,19 +16,19 @@ app.get('/', function(req, res) {
     // Replace these two arguments with your own account SID
     // and auth token:
     var capability = new twilio.Capability(
-      process.env.TWILIO_ACCOUNT_SID,
-      process.env.TWILIO_AUTH_TOKEN
+      config.env.TWILIO_ACCOUNT_SID,
+      config.env.TWILIO_AUTH_TOKEN
     );
 
     // Give the capability generator permission to accept incoming
     // calls to the ID "kevin"
-    capability.allowClientIncoming(process.env.INCOMING);
+    capability.allowClientIncoming(config.env.INCOMING);
 
-    capability.allowClientOutgoing(process.env.OUTCOMING);
+    capability.allowClientOutgoing(config.env.OUTCOMING);
 
     // Render JSON which contains our capability token
     res.json({ token:capability.generate() });
 });
 
-app.listen(8001);
-console.log('Visit http://localhost:8001/ to accept inbound calls!');
+app.listen(config.env.PORT);
+console.log('Visit http://localhost:'+config.env.PORT+'/ to accept inbound calls!');
