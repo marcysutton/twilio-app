@@ -1,0 +1,13 @@
+{
+  "name": "twilio-app",
+  "version": "0.0.1",
+  "description": "A Twilio auth endpoint generator for browser phone calls",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/marcysutton/twilio-app.git"
+  },
+  "devDependencies": {
+    "express": "~4.3.2",
+    "twilio": "~1.6.0"
+  }
+}
