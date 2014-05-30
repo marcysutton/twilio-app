@@ -28,6 +28,8 @@ app.get('/', function(req, res) {
 
     // Render JSON which contains our capability token
     res.json({ token:capability.generate() });
+  // set headers for JSON
+  res.header("Access-Control-Allow-Origin", "*");
 });
 
 app.listen(config.env.PORT);
