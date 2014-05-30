@@ -12,24 +12,25 @@ var app = express();
 // "kevin" (this could be any string)
 app.get('/', function(req, res) {
 
-    // Create an object which will generate a capability token
-    // Replace these two arguments with your own account SID
-    // and auth token:
-    var capability = new twilio.Capability(
-      config.env.TWILIO_ACCOUNT_SID,
-      config.env.TWILIO_AUTH_TOKEN
-    );
-
-    // Give the capability generator permission to accept incoming
-    // calls to the ID "kevin"
-    capability.allowClientIncoming(config.env.INCOMING);
-
-    capability.allowClientOutgoing(config.env.OUTCOMING);
-
-    // Render JSON which contains our capability token
-    res.json({ token:capability.generate() });
   // set headers for JSON
   res.header("Access-Control-Allow-Origin", "*");
+
+  // Create an object which will generate a capability token
+  // Replace these two arguments with your own account SID
+  // and auth token:
+  var capability = new twilio.Capability(
+    config.env.TWILIO_ACCOUNT_SID,
+    config.env.TWILIO_AUTH_TOKEN
+  );
+
+  // Give the capability generator permission to accept incoming
+  // calls to the ID "kevin"
+  capability.allowClientIncoming(config.env.INCOMING);
+
+  capability.allowClientOutgoing(config.env.OUTCOMING);
+
+  // Render JSON which contains our capability token
+  res.json({ token:capability.generate() });
 });
 
 app.listen(config.env.PORT);
