@@ -25,9 +25,9 @@ app.get('/', function(req, res) {
 
   // Give the capability generator permission to accept incoming
   // calls to the ID "kevin"
-  capability.allowClientIncoming(config.env.INCOMING);
+  //capability.allowClientIncoming(config.env.INCOMING);
 
-  capability.allowClientOutgoing(config.env.OUTCOMING);
+  capability.allowClientOutgoing(config.env.OUTGOING);
 
   // Render JSON which contains our capability token
   res.json({ token:capability.generate() });
